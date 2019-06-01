@@ -3,7 +3,7 @@
 ;============================================
 
 
-main	sei		; set interrupt disable flag
+main	sei			; set interrupt disable flag
 		jsr clear_screen
 		jsr $0856	; start playing SID music (Moonlight Sonata for now) init address at $0856
 
@@ -19,7 +19,7 @@ main	sei		; set interrupt disable flag
 		lda $d011	; bit 0 of $d011 is 9th bit for $d012
 		and #$7f
 		sta $d011	; makes sure that it's also set to 0
-		
+
 		lda #<irq 	; point to custom IRQ vector
 		ldx #>irq  	; same thing
 		sta $314	; store IRQ vector in $314/$315
