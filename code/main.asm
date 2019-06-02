@@ -42,6 +42,7 @@ main	sei			; set interrupt disable flag
 irq		dec $d019		; is the equivalent of "lda $d019 / sta $d019"  
 		
 		jsr play_music	; music playing subroutine
+		jsr control_character
 
 		jmp $ea81		; return to kernel's interrupt routine
 	

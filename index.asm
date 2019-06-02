@@ -50,6 +50,7 @@
 ;============================================
 
 !source "code/sub_play_music.asm"
+!source "code/sub_control_char.asm"
 
 ;============================================
 ; END
