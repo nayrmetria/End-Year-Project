@@ -44,6 +44,7 @@
 ;============================================
 
 !source "code/sub_clear_screen.asm"
+!source "code/sub_write_text.asm"
 
 ;============================================
 ; IRQ called subroutines
@@ -51,6 +52,12 @@
 
 !source "code/sub_play_music.asm"
 !source "code/sub_control_char.asm"
+
+;============================================
+; Misc Data such as text
+;============================================
+
+!source "code/data_title_text.asm"
 
 ;============================================
 ; END

@@ -5,6 +5,7 @@
 
 main	sei			; set interrupt disable flag
 		jsr clear_screen
+		jsr write_text
 		jsr $0856	; start playing SID music (Moonlight Sonata for now) init address at $0856
 
 		ldy #$7f    ; $7f = %01111111
