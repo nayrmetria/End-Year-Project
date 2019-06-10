@@ -10,13 +10,13 @@ write_text	lda $d018
 			and #$ef	; clears bit 4 of $d016
 			sta $d016
 
-loop_title_text	lda #$01	; makes text white I hope
-				sta $d828,x
+loop_title_text	lda #$01
+				sta $d9f3,x 
 				lda title,x ; read characters from data file
-				sta $0428,x	; place near center of screen ram
+				sta $05f3,x	; place near center of screen ram
 
 				inx
-				cpx #$28	; finished when all 40 columns are processed
+				cpx #$09	; finished when all 10 columns are processed
 				bne loop_title_text
 				rts
 
