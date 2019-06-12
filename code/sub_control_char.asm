@@ -17,10 +17,44 @@ left				lda #%00000100			; check against LEFT movement
 					bne right				; skips over sprite movement
 					dec $d000				; moves sprite left
 
+					lda #%11111111
+					bit $d000
+					beq in_between_left
+
+
 right 				lda #%00001000			; check against RIGHT movement
 					bit $dc00				; bitwise AND with 56320
 					bne exit				; skips over sprite movement
 					inc $d000				; moves sprite right
+
+					lda #%11111111			; check for full bitwise
+					cmp $d000
+					beq in_between_right
+					jmp exit
+
+in_between_right	lda #$01				; check for 9th bit
+					cmp $d010				; does actuall sub comp
+					beq loop_right			; goes to loop around
+					jmp x_high
+
+in_between_left		lda #$01				; check for 9th bit
+					cmp $d010				; checks if there is a 9th bit
+					beq x_high
+					jmp loop_left
+
+loop_left			lda #$ff
+					sta $d000
+					jmp x_high				
+
+loop_right			lda #$00
+					sta $d000
+
+x_high				lda $d010 				; loads the 9th bit address
+					eor #$01				; forces it to change
+					sta $d010
+
+
+
 
 exit				rts						; exits back to interrupt sequence
 

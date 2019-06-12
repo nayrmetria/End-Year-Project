@@ -10,7 +10,7 @@ write_text	lda $d018
 			and #$ef	; clears bit 4 of $d016
 			sta $d016
 
-loop_title_text	lda #$01
+loop_title_text	lda #$01	
 				sta $d9f3,x 
 				lda title,x ; read characters from data file
 				sta $05f3,x	; place near center of screen ram
