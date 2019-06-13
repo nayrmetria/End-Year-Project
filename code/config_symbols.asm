@@ -16,5 +16,5 @@ ddra            = $dc02     ; CIA#1 (Data Direction Register A)
 ddrb            = $dc03     ; CIA#1 (Data Direction Register B)
 border_color 	= $d020		; boder color
 bg_color		= $d021		; background color
-room_check_reg	= $002a
+room_check_reg	= $0313
 

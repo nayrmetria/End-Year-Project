@@ -6,6 +6,7 @@ control_character	lda #%00000001			; check against UP movement
 					bit $dc00				; bitwise AND with 56320 (joystick register)
 					bne down				; skips over the sprite movement if the AND returns a 
 					dec $d001				; move the sprite up
+					jmp up_ani				 									
 
 down				lda #%00000010			; check against DOWN movement
 					bit $dc00				; bitwise AND with 56320 
@@ -44,15 +45,40 @@ in_between_left		lda #$01				; check for 9th bit
 
 loop_left			lda #$ff
 					sta $d000
+					lda room_check_reg
+					adc #%00010000			; forces player to move room to x one
+					sbc #%10000000
+					sta room_check_reg
 					jmp x_high				
 
 loop_right			lda #$00
 					sta $d000
+					lda room_check_reg
+					adc #%00010000
+					sbc #%10000000
+					sta room_check_reg
 
 x_high				lda $d010 				; loads the 9th bit address
 					eor #$01				; forces it to change
 					sta $d010
+					jmp exit
 
+up_ani				lda delay_animation_pointer
+					eor #$01
+					sta delay_animation_pointer
+					beq exit
+					lda sprite_char_current_frame
+					bne increase_sprite
+
+reset_frames 		lda #sprite_char_frames
+					sta sprite_char_current_frame
+					lda #sprite_char_pointer
+					sta screen_ram + $3f8
+
+
+increase_sprite		inc screen_ram + $3f8
+					dec sprite_char_current_frame
+					jmp down
 
 
 

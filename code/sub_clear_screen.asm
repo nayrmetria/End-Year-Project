@@ -4,8 +4,8 @@
 
 clear_screen	ldx #$00 	; start of loop
 				stx $d021	; write black to screen color
-                ;ldy #$02    ; write red
-                ldy #$00
+                ldy #$02    ; write red
+                ;ldy #$00
                 sty $d020   ; write red to border color
 
 clear_loop		lda #$20	; $20 is spacebar screencode for PETSCII

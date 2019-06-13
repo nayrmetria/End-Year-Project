@@ -7,6 +7,7 @@
 ;============================================
 
 sprite_char_current_frame = $fb
+delay_animation_pointer = $fc
 sprite_char_frames = 10
 sprite_char_pointer = address_sprites / $40
 sprite_background_color = $00

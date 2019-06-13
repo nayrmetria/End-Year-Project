@@ -19,14 +19,15 @@
 !byte $0d,$08,$dc,$07,$9e,$20,$34,$39   ; BASIC loader to start at $c000...
 !byte $31,$35,$32,$00,$00,$00           ; puts BASIC line 2012 SYS 49152
 
-lda #$00								; sets rooms to 0 @ $002a
-sta $002a
+
 
 ;============================================
 ; 6502 start location
 ;============================================
 
 * = $c000
+
+
 
 ;============================================
 ; sprite and resource loading
@@ -62,7 +63,7 @@ sta $002a
 ;============================================
 
 !source "code/data_title_text.asm"
-!source "code/data_start_room.asm"
+
 
 ;============================================
 ; END

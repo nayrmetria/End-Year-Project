@@ -7,6 +7,9 @@ main	sei			; set interrupt disable flag
 		jsr clear_screen
 		jsr write_text
 		jsr $0856	; start playing SID music (Moonlight Sonata for now) init address at $0856
+		
+		lda #%00000000								; sets rooms to 0 @ $002a
+		sta room_check_reg
 
 		ldy #$7f    ; $7f = %01111111
     	sty $dc0d   ; Turn off CIAs Timer interrupts
